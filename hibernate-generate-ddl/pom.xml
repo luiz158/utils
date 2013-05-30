@@ -1,0 +1,39 @@
+<!-- Plugin to add in the build section of the project -->
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>1.2</version>
+    <executions>
+        <execution>
+            <id>generate-create-schema-ddl</id>
+            <phase>process-classes</phase>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                <!-- Path of the class -->
+                <mainClass>com.jeetemplates.schemaexporter.SchemaExport</mainClass>
+                <arguments>
+                    <!-- Create statements, comment out if not needed -->
+                    <argument>--create</argument>
+                    <!-- Drop statements, comment out if not needed -->
+                    <argument>--drop</argument>
+                    <!-- Delimiter -->
+                    <argument>--delimiter=/</argument>
+                    <!-- Output folder -->
+                    <argument>--output=${project.basedir}/${project.build.finalName}-create-tables.sql</argument>
+                    <!-- Name of the persistence unit -->
+                    <argument>persistence-unit-name</argument>
+                </arguments>
+            </configuration>
+        </execution>
+    </executions>
+    <dependencies>
+        <!-- Version of Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.1.8.Final</version>
+        </dependency>
+    </dependencies>
+</plugin>
