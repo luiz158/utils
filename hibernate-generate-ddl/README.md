@@ -5,3 +5,5 @@ This is not a permanent configuration because it needs to have the main generato
 - Copy and paste the <plugin> section in the build section of the project
 - Call the maven command : process-classes
 - Enjoy the ddl in the output folder !
+
+Source : http://doingenterprise.blogspot.ch/2012/05/schema-generation-with-hibernate-4-jpa.html
